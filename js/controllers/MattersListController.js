@@ -13,7 +13,13 @@ app.controller('MatterListController', ['$scope', '$http', function($scope, $htt
     console.log(matter);
     $scope.viewing = matter;
   };  
+  $scope.hideClosedMattersToggle = function () {
+    console.log('hideCloseToggle called');
 
+  }
+  $scope.refreshGroupFilter = function() {
+    console.log('refreshGroupFilter called');
+  }
   // function to toggle select all 
   $scope.checkAll = function () {
     

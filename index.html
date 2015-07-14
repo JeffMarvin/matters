@@ -21,20 +21,28 @@
     
     <script src="bower_components/angular/angular.min.js"></script>
   </head>
-  <body ng-app="MattersClioTestApp">
+  <body ng-app="MattersClioTestApp"  ng-controller="MatterListController">
     
     <div class="header">
       <div class="container">
         <div class="row">
-          <div class="col-md-2">
+          <div>
             <h1>Matters by Clio Test</h1>
+            <input type="text" name="group" list="groups" ng-model="SelectedGroup" ng-change="refreshGroupFilter()">
+              <datalist id="groups" > 
+                <option ng-repeat="client_group in mattersByClient" value="{{ client_group.client_name }}">
+              </datalist>
+            </select>
+
+            <input type="text" id="query" ng-model="query" placeholder="Filter by Keyword">
+            <input type="checkbox" ng-click="hideClosedMattersToggle()"> Hide closed matters
           </div>
         </div>
       </div>
     </div>
 
 
-    <div class="posts" ng-controller="MatterListController">
+    <div class="posts">
 
     <div ng-show="viewing" style='width:200px;float:right;'>
       <h2>{{ viewing.number }} <span style="color:#f33"> {{ viewing.status }}</span></h2>
@@ -45,9 +53,9 @@
       <div class="container">
         <input type="checkbox" ng-click="checkAll()">
         Select All  
-        <div class="group" ng-repeat="client_group in mattersByClient">    
+        <div class="group" ng-repeat="client_group in mattersByClient | filter:SelectedGroup">    
           <h3>{{ client_group.client_name}}</h3>
-          <div class="post" ng-click="viewMatter(matter)" ng-repeat="matter in client_group.matters">
+          <div class="post" ng-click="viewMatter(matter)" ng-repeat="matter in client_group.matters | filter:query ">
             <matter-post item="matter"></matter-post>
           </div>
         </div>
