@@ -28,14 +28,14 @@
         <div class="row">
           <div>
             <h1>Matters by Clio Test</h1>
-            <input type="text" name="group" list="groups" ng-model="SelectedGroup" ng-change="refreshGroupFilter()">
+            <input type="text" name="group" list="groups" ng-model="SelectedGroup">
               <datalist id="groups" > 
                 <option ng-repeat="client_group in mattersByClient" value="{{ client_group.client_name }}">
               </datalist>
             </select>
 
             <input type="text" id="query" ng-model="query" placeholder="Filter by Keyword">
-            <input type="checkbox" ng-click="hideClosedMattersToggle()"> Hide closed matters
+            <input type="checkbox" ng-model="enableClosedFilter"> Hide closed matters
           </div>
         </div>
       </div>
@@ -52,10 +52,10 @@
 
       <div class="container">
         <input type="checkbox" ng-click="checkAll()">
-        Select All  
+        Select All
         <div class="group" ng-repeat="client_group in mattersByClient | filter:SelectedGroup">    
           <h3>{{ client_group.client_name}}</h3>
-          <div class="post" ng-click="viewMatter(matter)" ng-repeat="matter in client_group.matters | filter:query ">
+          <div class="post" ng-click="viewMatter(matter)" ng-repeat="matter in client_group.matters | isOpen:enableClosedFilter | filter:query">
             <matter-post item="matter"></matter-post>
           </div>
         </div>
@@ -76,7 +76,9 @@
     <!-- Directives -->
     <script src="js/directives/matterPost.js"></script>
     
-    
+    <!-- Filters -->
+    <script src="js/filters.js"></script>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 

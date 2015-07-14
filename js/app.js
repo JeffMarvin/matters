@@ -1,1 +1,1 @@
-var app = angular.module('MattersClioTestApp', []);
+var app = angular.module('MattersClioTestApp', ['matterFilters']);

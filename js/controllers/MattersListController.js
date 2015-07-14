@@ -7,20 +7,14 @@ app.controller('MatterListController', ['$scope', '$http', function($scope, $htt
   // init defaults
   $scope.selectedAll = false;
   $scope.viewing = null;
-
-  // function to show edit view of matter clicked on 
+  $scope.enableClosedFilter = false;
+ 
+  // show edit view of matter clicked on 
   $scope.viewMatter = function(matter) {
-    console.log(matter);
     $scope.viewing = matter;
   };  
-  $scope.hideClosedMattersToggle = function () {
-    console.log('hideCloseToggle called');
 
-  }
-  $scope.refreshGroupFilter = function() {
-    console.log('refreshGroupFilter called');
-  }
-  // function to toggle select all 
+  // toggle select all 
   $scope.checkAll = function () {
     
     //toggle value
@@ -30,7 +24,7 @@ app.controller('MatterListController', ['$scope', '$http', function($scope, $htt
       $scope.selectedAll = true;
     };
 
-    // iterate through matters to toggle selectedAll checkbox value
+    // iterate through matters to assign new selectedAll checkbox value
     angular.forEach($scope.mattersByClient, function (group) {
       angular.forEach(group, function(matters) {
         angular.forEach(matters, function(matter) {
