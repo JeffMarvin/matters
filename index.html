@@ -26,55 +26,71 @@
   </head>
   <body ng-app="MattersClioTestApp"  ng-controller="MatterListController">
     
-   <div class="header">
+   <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-        <div class="row">
-          <div>
-            <h1>Matters by Clio Test</h1>
-            <input type="text" name="group" list="groups" ng-model="SelectedGroup">
-              <datalist id="groups" > 
-                <option ng-repeat="client_group in mattersByClient" value="{{ client_group.client_name }}">
-              </datalist>
-            </select>
+        <div class="navbar-header">
+          
+          <h1>Matters by Clio Test</h1>
+          
+          <form class="form-inline" role="form">
+            <input class="form-control" type="text" name="group" list="groups" ng-model="SelectedGroup" placeholder="Filter by client..." >
+            <datalist id="groups" > 
+              <option ng-repeat="client_group in mattersByClient" value="{{ client_group.client_name }}">
+            </datalist>
+            
 
-            <input type="text" id="query" ng-model="query" placeholder="Filter by Keyword">
-            <input type="checkbox" ng-model="enableClosedFilter"> Hide closed matters
-          </div>
+            <input type="text" id="query" ng-model="query" placeholder="Filter by Keyword" class="form-control" >
+            
+            <div class="checkbox-inline form-group">
+              <input type="checkbox" ng-model="enableClosedFilter"> 
+              <label>Hide closed matters</label>
+            </div>
+          </form>
         </div>
       </div>
     </div>
 
 
-    <div class="posts">
+    <div class="container container-fluid">
+      <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-3 sidebar">
+            <!-- Matters List -->
+            <form class="form" role="form">
+              <div class="checkbox-inline form-group">
+                <input type="checkbox" ng-click="checkAll()">
+                <label>Select All</label>
+              </div>
+            </form>
+            <div class="group" ng-repeat="client_group in mattersByClient | filter:SelectedGroup">    
+              <h3 ng-if="client_group.matters.length > 0">{{ client_group.client_name}}</h3>
 
-    <div ng-show="viewing" style='width:200px;float:right;'>
-      <h2>{{ viewing.number }} <span style="color:#f33"> {{ viewing.status }}</span></h2>
-      <p>{{ viewing.description }}</p>
-    </div>
+              <div class="post" ng-click="viewMatter(matter)" ng-repeat="matter in client_group.matters | isOpen:enableClosedFilter | filter:query">
 
+                <matter-post item="matter" list="client_group.matters"></matter-post>
 
-      <div class="container">
-        <input type="checkbox" ng-click="checkAll()">
-        Select All
-        <div class="group" ng-repeat="client_group in mattersByClient | filter:SelectedGroup">    
-          <h3 ng-if="client_group.matters.length > 0">{{ client_group.client_name}}</h3>
-
-          <div class="post" ng-click="viewMatter(matter)" ng-repeat="matter in client_group.matters | isOpen:enableClosedFilter | filter:query">
-
-            <matter-post item="matter" list="client_group.matters"></matter-post>
+              </div>
+            </div>
 
           </div>
-        </div>
+          <div class="col-xs-8 col-xs-offset-4 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">
+            <!-- Matter View Area -->
+            <div ng-show="viewing">
+              <h2>{{ viewing.number }} <small ng-class="(viewing.status == 'closed')? 'text-danger' : ''"> {{ viewing.status }}</small></h2>
+              <p>{{ viewing.description }}</p>
+            </div>            
+          </div>
 
       </div>
+    </div>
+
+
 
 
     </div>
 
 
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- UI Bootstrap -->
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.
 js"></script>
     <!-- Modules -->
