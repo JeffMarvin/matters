@@ -1,0 +1,24 @@
+{
+  "name": "y",
+  "version": "0.0.2",
+  "authors": [
+    "Jeff Marvin <jeff@jeffmarvin.com>"
+  ],
+  "description": "Clio Test Angular App",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.13.0",
+    "ui.bootstrap": "~0.13.0",
+    "angular": "~1.4.2",
+    "bootstrap": "~3.3.5"
+  }
+}

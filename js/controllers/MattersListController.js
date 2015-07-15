@@ -1,6 +1,6 @@
 app.controller('MatterListController', ['$scope', '$http', function($scope, $http) {
   
-  $http.get('js/data/matters.json').success(function(data) {
+  $http.get('data/matters.json').success(function(data) {
     $scope.mattersByClient = data;
   });
   
@@ -9,12 +9,12 @@ app.controller('MatterListController', ['$scope', '$http', function($scope, $htt
   $scope.viewing = null;
   $scope.enableClosedFilter = false;
  
-  // show edit view of matter clicked on 
+  // define function to show edit view of matter clicked on 
   $scope.viewMatter = function(matter) {
     $scope.viewing = matter;
   };  
 
-  // toggle select all 
+  // define function to toggle select all 
   $scope.checkAll = function () {
     
     //toggle value
@@ -35,7 +35,7 @@ app.controller('MatterListController', ['$scope', '$http', function($scope, $htt
 
   };  
 
- 
+
 }]);
 
 

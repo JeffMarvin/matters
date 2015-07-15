@@ -1,3 +1,14 @@
 <input type="checkbox" ng-model="item.Selected">
 	<h3 class="author-name"> {{ item.number }} </h3>
 	<p class="comment-text"> {{ item.description }} </p>
+
+<div class="btn-group" dropdown >
+  <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+    <span class='glyphicon glyphicon-triangle-bottom'></span>
+  </button>
+
+  <ul class="dropdown-menu" role="menu">
+  <li><a ng-click="deleteMatter(item,list)">Delete Matter</a></li>
+  <li><a ng-click="closeMatter(item)">Close Matter</a></li>
+  </ul>
+</div>
