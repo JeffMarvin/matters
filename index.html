@@ -30,17 +30,19 @@
       <div class="container">
         <div class="navbar-header">
           
-          <h1>Matters by Clio Test</h1>
+          <h1>Matters</h1>
           
-          <form class="form-inline" role="form">
-            <input class="form-control" type="text" name="group" list="groups" ng-model="SelectedGroup" placeholder="Filter by client..." >
-            <datalist id="groups" > 
-              <option ng-repeat="client_group in mattersByClient" value="{{ client_group.client_name }}">
-            </datalist>
-            
+          <form style="display:inline" class="form-inline" role="form">
+            <div class="form-group">
+              <input class="form-control" type="text" name="group" list="groups" ng-model="SelectedGroup" placeholder="Filter by client..." >
+              <datalist id="groups" > 
+                <option ng-repeat="client_group in mattersByClient" value="{{ client_group.client_name }}">
+              </datalist>
+            </div>
 
-            <input type="text" id="query" ng-model="query" placeholder="Filter by Keyword" class="form-control" >
-            
+            <div class="form-group">
+              <input type="text" id="query" ng-model="query" placeholder="Filter by Keyword" class="form-control" >
+            </div>
             <div class="checkbox-inline form-group">
               <input type="checkbox" ng-model="enableClosedFilter"> 
               <label>Hide closed matters</label>
@@ -51,9 +53,9 @@
     </div>
 
 
-    <div class="container container-fluid">
+    <div class="container-fluid">
       <div class="row">
-          <div class="col-xs-4 col-sm-4 col-md-3 sidebar">
+          <div class="col-xs-4 col-sm-4 col-md-3 sidebar" id="matters-list">
             <!-- Matters List -->
             <form class="form" role="form">
               <div class="checkbox-inline form-group">
@@ -64,9 +66,8 @@
             <div class="group" ng-repeat="client_group in mattersByClient | filter:SelectedGroup">    
               <h3 ng-if="client_group.matters.length > 0">{{ client_group.client_name}}</h3>
 
-              <div class="post" ng-click="viewMatter(matter)" ng-repeat="matter in client_group.matters | isOpen:enableClosedFilter | filter:query">
-
-                <matter-post item="matter" list="client_group.matters"></matter-post>
+              <div class="matter" ng-click="viewMatter(matter)" ng-repeat="matter in client_group.matters | isOpen:enableClosedFilter | filter:query">
+              <matter-post item="matter" list="client_group.matters"></matter-post>
 
               </div>
             </div>

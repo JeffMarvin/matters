@@ -16,8 +16,7 @@ app.directive('matterPost', function() {
 		//define function to delete matter
 	  	scope.deleteMatter = function(item,list) { 
 	    	list.splice( list.indexOf(item), 1 );
-	    	console.log(list);
-	  	};
+	    };
 	}
   }
 });

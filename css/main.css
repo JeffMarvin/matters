@@ -5,29 +5,24 @@ html, body {
 
 body {
   background-color: #f5f5f5;
-  padding-top: 150px;
+  padding-top: 50px;
 }
 
 
-.header {
-  background-color: #e0dbdb;
-  height: 150px;
-  overflow-y: auto;
-  
-}
 
-.header h1 {
+
+.navbar-header h1 {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 32px;
-  font-weight: 200;
-  margin: 0;
-  padding: 7px 0;
+  font-weight: 600;
+  padding-top: 10px;
+  padding-right: 24px;
   display: inline-block;
 }
 
 .sidebar {
 	position: fixed;
-	top: 150px;
+	top: 100px;
 	bottom: 0;
 	left: 0;
 	z-index: 1000;
@@ -38,51 +33,52 @@ body {
 	background-color: #f5f5f5;
 	border-right: 1px solid #eee;
 }
-.matter-list {
-	overflow-y: scroll;
-	position: absolute;
-	
-}
 
-.post {
+#matters-list {
+  padding: 0 10px;
+
+}
+.group h3 {
+  font-size: 16px;
+  font-variant: small-caps;
+}
+.matter {
   background-color: #fff;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 10px;
+  margin: 10px 0;
   box-shadow: 0 2px 3px rgba(0,0,0,.1);
 }
-
-.post .avatar {
-  padding-right: 10px;
-  padding-bottom: 5px;
+.matter .checkbox {
+  height: 24px;
+  width: 24px;
 }
-
-.post h3 {
-  font-size: 16px;
+.matter h3 {
+  font-size: 14px;
   margin-top: 0;
   display: inline;
+  font-variant: normal;
 }
 
-.post p {
+.matter p {
   font-size: 14px;
 }
 
-.post p + img {
-  width: 100%;
-  margin-bottom: 15px;
-}
+
 
 .btn {
+  height: 24px;
+  width: 24px;
   color: #333;
   border-color: #ccc;
   background-color: transparent;
   font-weight: 600;
+  padding: 0;
 }
 
 .btn-menu .btn {
   background-color: #CC0000;
   border-color: #B20000;
   color: #fff;
-  float: right;
 }
 
 .btn:focus {
