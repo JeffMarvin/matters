@@ -4,39 +4,52 @@ html, body {
 }
 
 body {
-  background-color: #f5f5f5;
-  padding-top: 50px;
+  background-color: #fff;
+  padding-top: 90px;
 }
 
+.container {
+  float:left;
 
-
-
+}
 .navbar-header h1 {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 32px;
-  font-weight: 600;
-  padding-top: 10px;
-  padding-right: 24px;
+  font-weight: 700;
+  padding: 15px 100px 10px 10px;
   display: inline-block;
+  margin: 0;
+}
+
+.navbar-header .form-group {
+  padding: 10px 20px;
+  vertical-align: bottom;
 }
 
 .sidebar {
 	position: fixed;
-	top: 100px;
+	top: 60px;
 	bottom: 0;
 	left: 0;
 	z-index: 1000;
 	display: block;
-	padding: 5px 0 0 0;
-	overflow-x:  hidden;
+	padding: 0;
+	overflow-x:  auto;
 	overflow-y: auto;
-	background-color: #f5f5f5;
+	background-color: #f0f0f0;
 	border-right: 1px solid #eee;
 }
 
 #matters-list {
+  margin: 0;
   padding: 0 10px;
+}
 
+#select-all-check {
+  padding-top: 24px;
+}
+#select-all-check label {
+  font-weight: 400;
 }
 .group h3 {
   font-size: 16px;
@@ -47,11 +60,10 @@ body {
   padding: 10px;
   margin: 10px 0;
   box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  width: 100%;
+  position: relative;
 }
-.matter .checkbox {
-  height: 24px;
-  width: 24px;
-}
+
 .matter h3 {
   font-size: 14px;
   margin-top: 0;
@@ -63,24 +75,42 @@ body {
   font-size: 14px;
 }
 
+.matter-text {
+  width: 80%;
+  margin: 0 auto;
+}
 
 
 .btn {
-  height: 24px;
-  width: 24px;
-  color: #333;
-  border-color: #ccc;
+  height: 20px;
+  width: 20px;
+  color: #000;
+  border-color: #fff;
   background-color: transparent;
   font-weight: 600;
   padding: 0;
 }
 
 .btn-menu .btn {
-  background-color: #CC0000;
-  border-color: #B20000;
-  color: #fff;
+  background-color: #fff;
+  border-color: #fff;
+  color: #000;
 }
 
 .btn:focus {
   outline: 0;
+}
+.matter-menu {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right:10px;
+  margin: 0 0 100px 6px;
+}
+.matter-check {
+  display:block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0 6px 100px 0;
 }

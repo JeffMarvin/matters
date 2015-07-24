@@ -1,14 +1,18 @@
-<div class="btn-group btn-menu" dropdown >
+<div class="btn-group btn-menu matter-menu" dropdown >
   <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
     <span class='glyphicon glyphicon-triangle-bottom'></span>
   </button>
 
-  <ul class="dropdown-menu" role="menu">
+  <ul class="dropdown-menu drop" role="menu">
   <li><a ng-click="deleteMatter(item,list)">Delete Matter</a></li>
   <li><a ng-click="closeMatter(item)">Close Matter</a></li>
   </ul>
 </div>
 
-<input type="checkbox" ng-model="item.Selected">
-<h3 class="author-name"> {{ item.number }} </h3>
-<p class="comment-text"> {{ item.description }} </p>
+<div class="form-group matter-check">  
+  <input type="checkbox" ng-model="item.Selected">
+</div>
+<div class="matter-text">
+  <h3> {{ item.number }} </h3>
+  <p> {{ item.description }} </p>
+</div>
